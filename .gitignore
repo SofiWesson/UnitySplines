@@ -2,13 +2,13 @@
 #
 # Get latest from https://github.com/github/gitignore/blob/main/Unity.gitignore
 #
-UnitySplines/[Ll]ibrary/
-UnitySplines/[Tt]emp/
-UnitySplines/[Oo]bj/
-UnitySplines/[Bb]uild/
-UnitySplines/[Bb]uilds/
-UnitySplines/[Ll]ogs/
-UnitySplines/[Uu]ser[Ss]ettings/
+Splines/[Ll]ibrary/
+Splines/[Tt]emp/
+Splines/[Oo]bj/
+Splines/[Bb]uild/
+Splines/[Bb]uilds/
+Splines/[Ll]ogs/
+Splines/[Uu]ser[Ss]ettings/
 
 #polybrush junk
 UnitySplines/Assets/Polybrush Data/
@@ -79,4 +79,4 @@ crashlytics-build.properties
 *EditorBuildSettings.asset
 *EditorSettings.asset
 *ProjectSettings.asset
-UnitySplines/ProjectSettings/Packages/com.unity.polybrush/Settings.json
+Splines/ProjectSettings/Packages/com.unity.polybrush/Settings.json
