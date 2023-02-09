@@ -15,6 +15,7 @@ namespace Splines
         public bool showTrackingPoint = false;
         public bool showPoints = false;
         public bool showLines = false;
+        public bool showCurve = false;
 
         [Space(10)]
         [Header("Anchor Controls")]
@@ -87,11 +88,6 @@ namespace Splines
             points.Add(endPoint);
         }
 
-        public void UpdatePoints()
-        {
-            
-        }
-
         public void Bernstein()
         {
             int localCurve = (int)tValue;
@@ -113,7 +109,9 @@ namespace Splines
 
         public void PolynomialCoefficients()
         {
+            // gets what curve the tracking point is on
             int localCurve = (int)tValue + 2 * (int)tValue;
+            // t value local to the local curve
             float localT = tValue - (int)tValue;
 
             // more readable anchor points
@@ -129,30 +127,6 @@ namespace Splines
 
             // add all together
             trackingPoint = p0 + con1 + con2 + con3;
-        }
-
-        public Vector3 PolynomialCoefficientsReturn(float a_tValue)
-        {
-            int localCurve = (int)tValue;
-
-            // more readable anchor points
-            Vector3 p0 = points[0 + localCurve];
-            Vector3 p1 = points[1 + localCurve];
-            Vector3 p2 = points[2 + localCurve];
-            Vector3 p3 = points[3 + localCurve];
-
-            // split exquation into 3 separate lines
-            Vector3 con1 = a_tValue * (-3 * p0 + 3 * p1);
-            Vector3 con2 = a_tValue * a_tValue * (3 * p0 - 6 * p1 + 3 * p2);
-            Vector3 con3 = a_tValue * a_tValue * a_tValue * (-p0 + 3 * p1 - 3 * p2 + p3);
-
-            // add all together
-            return p0 + con1 + con2 + con3;
-        }
-
-        public Vector3 V3Lerp(Vector3 a, Vector3 b, float t)
-        {
-            return a + (b - a) * t;
         }
 
         private void OnDrawGizmos()
@@ -185,6 +159,16 @@ namespace Splines
                 // draws the tracking point
                 Gizmos.color = Color.yellow;
                 Gizmos.DrawWireSphere(trackingPoint, pointSize);
+            }
+
+            if (showCurve)
+            {
+                Texture2D texture = null;
+
+                for (int i = 0; i < points.Count - 3; i += 3)
+                {
+                    UnityEditor.Handles.DrawBezier(points[i], points[i + 3], points[i + 1], points[i + 2], Color.white, texture, 2f);
+                }
             }
         }
     }
