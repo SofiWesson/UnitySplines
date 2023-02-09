@@ -156,9 +156,20 @@ MonoBehaviour:
   showTrackingPoint: 1
   showPoints: 1
   showLines: 1
-  numOfCurves: 0
-  anchorPoints: []
+  numOfCurves: 3
   tValue: 0
+  trackingPoint: {x: 0, y: 0, z: 0}
+  points:
+  - {x: 0, y: 0, z: 0}
+  - {x: 1, y: 0, z: 0}
+  - {x: 1, y: 0, z: 1}
+  - {x: 0, y: 0, z: 1}
+  - {x: -1, y: 0, z: 1}
+  - {x: -1, y: 0, z: 2}
+  - {x: 0, y: 0, z: 2}
+  - {x: 1, y: 0, z: 2}
+  - {x: 1, y: 0, z: 3}
+  - {x: 0, y: 0, z: 3}
 --- !u!4 &522069783
 Transform:
   m_ObjectHideFlags: 0
